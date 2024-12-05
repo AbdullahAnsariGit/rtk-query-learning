@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/Assets/fonts/ecal.ttf",
+      "sha1": "eb1ac25ae5af273c16753fdf76b5a2919f4aac25"
+    },
+    {
+      "path": "src/Assets/fonts/ecam.ttf",
+      "sha1": "e97e414467f782f08b7227a89db002829ebb4a52"
+    },
+    {
+      "path": "src/Assets/fonts/ecasm.ttf",
+      "sha1": "e89ec5f5d0749a91981e5544c67bb73d8e135445"
+    },
+    {
+      "path": "src/Assets/fonts/gr.ttf",
+      "sha1": "43b31b30c36102e5aa886834faea9e25c35fbde6"
+    },
+    {
+      "path": "src/Assets/fonts/index.js",
+      "sha1": "1c9b65b5378e72f7bc9a8f19d5a633c01bdaefb1"
+    },
+    {
+      "path": "src/Assets/fonts/mer.otf",
+      "sha1": "1e787896f58bb8ef3b6d5276f8c6d8da541150d9"
+    },
+    {
+      "path": "src/Assets/fonts/meub.otf",
+      "sha1": "c34583b8a5b48d6b5e2f657fecdacccf77993835"
+    },
+    {
+      "path": "src/Assets/fonts/qr.ttf",
+      "sha1": "eb89eede36801a0b3c50f03e4320797c18dddee1"
+    }
+  ]
+}

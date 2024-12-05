@@ -1,0 +1,46 @@
+diff --git a/node_modules/react-native-dropdown-select-list/components/SelectList.tsx b/node_modules/react-native-dropdown-select-list/components/SelectList.tsx
+index 234a7e1..da3b14f 100644
+--- a/node_modules/react-native-dropdown-select-list/components/SelectList.tsx
++++ b/node_modules/react-native-dropdown-select-list/components/SelectList.tsx
+@@ -8,10 +8,12 @@ import {
+     ScrollView,
+     Animated,
+     TextInput,
+-    Keyboard
++    Keyboard,
++    Dimensions
+ } from 'react-native';
+ 
+ import { SelectListProps } from '..';
++const {height:HEIGHT} = Dimensions.get('screen')
+ 
+ type L1Keys = { key?: any; value?: any; disabled?: boolean | undefined }
+ 
+@@ -35,6 +37,7 @@ const SelectList: React.FC<SelectListProps> =  ({
+         disabledItemStyles,
+         disabledTextStyles,
+         onSelect = () => {},
++        lefticon,
+         save = 'key',
+         dropdownShown = false,
+         fontFamily
+@@ -170,7 +173,19 @@ const SelectList: React.FC<SelectListProps> =  ({
+                     </View>
+                 :
+                     <TouchableOpacity style={[styles.wrapper,boxStyles]} onPress={() => { if(!dropdown){ Keyboard.dismiss(); slidedown() }else{ slideup() } }}>
++                        <View style={{flexDirection:'row', gap:(HEIGHT * 0.01)* 1.6}}>
++                      {
++                            (lefticon)
++                            &&
++                                <Image 
++                                    source={lefticon}
++                                    resizeMode='contain'
++                                    style={{width:20,height:20}}
++                                />
++                         
++                        }
+                         <Text style={[{fontFamily},inputStyles]}>{ (selectedval == "") ? (placeholder) ? placeholder : 'Select option' : selectedval  }</Text>
++                        </View>
+                         {
+                             (!arrowicon)
+                             ?
