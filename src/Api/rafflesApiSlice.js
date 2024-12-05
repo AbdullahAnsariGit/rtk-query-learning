@@ -10,22 +10,23 @@ export const rafflesApi = createApi({
         return {
           url: "tasks/fetch-tasks",
           method: "GET",
-          params, // Pass page and filters
+          params,
         };
       },
-      serializeQueryArgs: ({ endpointName }) => endpointName, // Cache endpoint
+      serializeQueryArgs: ({ endpointName }) => endpointName,
       merge: (currentCache = { data: [] }, newItems, { arg }) => {
         console.log("arg", arg);
-
+        console.log("newItems", newItems);
         const { page } = arg;
-
         if (page === 1) {
           return newItems;
         }
+
         return {
+          status: newItems.status,
           data: [...currentCache.data, ...newItems.data], // Merge data arrays
-          // current_page: newItems.current_page,
-          // last_page: newItems.last_page,
+          hasNextPage: newItems.hasNextPage,
+          message: newItems.message,
         };
       },
       forceRefetch({ currentArg, previousArg }) {
@@ -34,9 +35,9 @@ export const rafflesApi = createApi({
 
         if (!previousArg) return false; // Skip refetch for the initial fetch because initial fetch previous args undefined
         return (
-          currentArg.page !== previousArg.page || // Check if page changed then refetch
-          JSON.stringify(currentArg.search) !==
-            JSON.stringify(previousArg.search)
+          currentArg !== previousArg
+          // currentArg.page !== previousArg.page || // Check if page changed then refetch
+          // currentArg.search !== previousArg.search
         ); // Check if filters changed
       },
     }),
