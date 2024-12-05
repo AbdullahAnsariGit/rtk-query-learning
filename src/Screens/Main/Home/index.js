@@ -1,16 +1,21 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { useGetAllRafflesQuery } from "../../../Api/rafflesApiSlice";
 import PaginatedList from "./pagination/List";
 import { colors } from "../../../theme/colors";
 import { TextInput } from "react-native-gesture-handler";
+import Popup from "../../../Components/Popup";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState({
     page: 1,
     limit: 5,
     search: "",
+    startDate: "",
+    endDate: "",
   });
+
+  const [isVisible, setIsVisible] = useState(true);
 
   const renderItem = ({ item, index }) => (
     <View
@@ -40,7 +45,6 @@ const Home = () => {
     <View>
       <ListHeader />
       {/* Search input field */}
-
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.input}
@@ -65,15 +69,26 @@ const Home = () => {
           <Text style={styles.searchButtonText}>Search</Text>
         </TouchableOpacity>
       </View>
-
       <PaginatedList
         fetchData={useGetAllRafflesQuery}
         renderItem={renderItem}
         payload={searchQuery}
         ListHeaderComponent={ListHeader}
         ListFooterComponent={() => (
-          <Text style={{ textAlign: "center", color: "white" }}>a</Text>
+          <Text style={{ textAlign: "center", color: "white" }}>
+            No more data
+          </Text>
         )}
+      />
+      <Button
+        title="Filter"
+        onPress={() => {
+          setSearchQuery((prevState) => ({
+            ...prevState,
+            startDate: "2024-12-03T08:44:13.774Z",
+            endDate: "2024-12-05T08:44:13.774Z",
+          }));
+        }}
       />
     </View>
   );

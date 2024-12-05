@@ -42,9 +42,11 @@ export const usePagination = (fetchData, config = {}) => {
       ...prevPage,
       page: 1,
       search: config?.search,
+      startDate: config?.startDate,
+      endDate: config?.endDate,
     }));
     console.log("page-after-fresh", config);
-  }, [config?.search]);
+  }, [config?.search || config.startDate || config.endDate]);
 
   return {
     data,

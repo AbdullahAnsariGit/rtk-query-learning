@@ -1,13 +1,13 @@
-import {Image, Modal, TextInput, TouchableOpacity, View} from 'react-native';
-import IconButton from '../Buttons/IconButton';
-import MainButton from '../Buttons/MainButton';
-import React from 'react';
-import {colors} from '../../theme/colors';
-import {layout} from '../../theme/styles';
-import styles from './styles';
-import MyIcons from '../MyIcons';
-import SyneBold from '../wrappers/Texts/SyneBold';
-import SyneRegular from '../wrappers/Texts/SyneRegular';
+import { Image, Modal, TextInput, TouchableOpacity, View } from "react-native";
+import IconButton from "../Buttons/IconButton";
+import MainButton from "../Buttons/MainButton";
+import React from "react";
+import { colors } from "../../theme/colors";
+import { layout } from "../../theme/styles";
+import styles from "./styles";
+import MyIcons from "../MyIcons";
+import SyneBold from "../wrappers/Texts/SyneBold";
+import SyneRegular from "../wrappers/Texts/SyneRegular";
 
 const Popup = ({
   visible,
@@ -21,6 +21,7 @@ const Popup = ({
   onChangeText,
   successSecondary,
   noBtnTitle,
+  filter,
 }) => {
   const handleSuccess = () => {
     hide();
@@ -32,25 +33,24 @@ const Popup = ({
       animationType="fade"
       transparent={true}
       visible={visible}
-      style={layout.flex}>
+      style={layout.flex}
+    >
       <View style={[styles.mainContainer]}>
         <TouchableOpacity
           activeOpacity={0.9}
           onPress={hide}
-          style={styles.backdropContainer}>
+          style={styles.backdropContainer}
+        >
           <View style={styles.blur} />
         </TouchableOpacity>
         <View style={[styles.contentContainer]}>
-
-          <MyIcons name={'checked'}/>
+          <MyIcons name={"checked"} />
           {/* <Image
             source={icon ? icon : images.icons.success}
             style={styles.image}
           /> */}
           <SyneBold text={title} style={styles.title} />
-          {subTitle && (
-            <SyneRegular text={subTitle} style={styles.subTitle} />
-          )}
+          {subTitle && <SyneRegular text={subTitle} style={styles.subTitle} />}
           {reason && (
             <TextInput
               placeholder="Enter Reason Here..."
@@ -61,6 +61,7 @@ const Popup = ({
               textAlignVertical="top"
             />
           )}
+
           <View style={layout.flexRow}>
             <MainButton
               title={successBtnTitle}
