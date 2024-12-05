@@ -14,9 +14,6 @@ export const usePagination = (fetchData, config = {}) => {
   console.log("filters--inhook", filters);
 
   // Combine page and filters to fetch data
-  let myfilter = {
-    search: "latest",
-  };
   const { data, isLoading, isFetching, refetch, error } = fetchData({
     ...page,
     ...filters,
